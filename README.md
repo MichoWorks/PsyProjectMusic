@@ -1,6 +1,6 @@
 # PsyProject Music Site
 
-Welcome to **PsyProject Music Site**! This is a personal website dedicated to showcasing my private collection of original songs and remixes. The site is hosted on GitHub Pages, providing direct streaming access to a curated selection of my audio files.
+Welcome to **PsyProject Music Site**! This repository hosts a personal website dedicated to showcasing a private collection of my original songs and remixes. The site is hosted on GitHub Pages, providing direct streaming access to a curated selection of my audio files.
 
 ## Contents
 
@@ -16,6 +16,11 @@ Welcome to **PsyProject Music Site**! This is a personal website dedicated to sh
 
 1. **Navigate to the Song**: Find the desired song or remix using the links on the site.
 2. **Stream or Download**: Click the links to stream the tracks or download them for offline listening.
+
+## Repository Details
+
+- **Repository Name**: MichoWorks/PsyProjectMusic
+- **GitHub Pages Site**: [https://michoworks.github.io/PsyProjectMusic/](https://michoworks.github.io/PsyProjectMusic/)
 
 ## Contributions
 

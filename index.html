@@ -25,6 +25,12 @@
     </ul>
 
     <script>
+        function formatDuration(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${minutes}m ${secs}s`;
+        }
+
         async function fetchAudioInfo(url) {
             const audioContext = new (window.AudioContext || window.webkitAudioContext)();
             const response = await fetch(url);
@@ -40,8 +46,8 @@
             const links = document.querySelectorAll('a[data-info]');
             for (const link of links) {
                 const info = await fetchAudioInfo(link.href);
-                link.dataset.duration = `Duration: ${info.duration.toFixed(2)} seconds`;
-                link.dataset.sampleRate = `Sample Rate: ${info.sampleRate} Hz`;
+                link.dataset.duration = `Duration: ${formatDuration(info.duration)}`;
+                link.dataset.sampleRate = `Sample Rate: ${info.sampleRate ? info.sampleRate + ' Hz' : 'Not available'}`;
                 link.innerText += ` (${link.dataset.duration}, ${link.dataset.sampleRate})`;
             }
         });

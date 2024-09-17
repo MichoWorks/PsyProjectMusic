@@ -4,24 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PsyProject Music Site</title>
+    <script src="https://cdn.jsdelivr.net/npm/music-metadata-browser@7.0.0/dist/music-metadata-browser.min.js"></script>
 </head>
 <body>
     <h1>Welcome to PsyProject Music Site</h1>
-    <p>Click on the songs below to listen or stream them via UAPP:</p>
+    <p>Click on the songs below to listen or stream them:</p>
     <ul>
-        <li><a href="https://chaty.free.nf/music/Hebrew_Remix/6_Foot7Foot.mp3">6 Foot7Foot</a></li>
-        <li><a href="https://chaty.free.nf/music/Hebrew_Remix/After_Basdinim.mp3">After Basdinim</a></li>
-        <li><a href="https://chaty.free.nf/music/Hebrew_Remix/Arak.mp3">Arak</a></li>
-        <li><a href="https://chaty.free.nf/music/Hebrew_Remix/Break_Heart.wav">Break Heart</a></li>
-        <li><a href="https://chaty.free.nf/music/Hebrew_Remix/Intelectoars.mp3">Intelectoars</a></li>
-        <li><a href="https://chaty.free.nf/music/Hebrew_Remix/LihoraXLow.mp3">LihoraXLow</a></li>
-        <li><a href="https://chaty.free.nf/music/Hebrew_Remix/Ma_ata_Gay.mp3">Ma ata Gay</a></li>
-        <li><a href="https://chaty.free.nf/music/Hebrew_Remix/Ola_Al_Shulchanot.mp3">Ola Al Shulchanot</a></li>
-        <li><a href="https://chaty.free.nf/music/Hebrew_Remix/OldFriend.mp3">OldFriend</a></li>
-        <li><a href="https://chaty.free.nf/music/Hebrew_Remix/Player.mp3">Player</a></li>
-        <li><a href="https://chaty.free.nf/music/Hebrew_Remix/Pop_It_Up.wma">Pop It Up</a></li>
-        <li><a href="https://chaty.free.nf/music/Hebrew_Remix/Shara.wav">Shara</a></li>
-        <li><a href="https://chaty.free.nf/music/Hebrew_Remix/TzlilMitar.mp3">TzlilMitar</a></li>
+        <li><a href="https://michoworks.github.io/PsyProjectMusic/Hebrew_Remix/6_Foot7Foot.mp3" onclick="getMetadata('https://michoworks.github.io/PsyProjectMusic/Hebrew_Remix/6_Foot7Foot.mp3', 'audio/mp3')">6 Foot7Foot</a></li>
+        <li><a href="https://michoworks.github.io/PsyProjectMusic/Hebrew_Remix/After_Basdinim.mp3" onclick="getMetadata('https://michoworks.github.io/PsyProjectMusic/Hebrew_Remix/After_Basdinim.mp3', 'audio/mp3')">After Basdinim</a></li>
+        <li><a href="https://michoworks.github.io/PsyProjectMusic/Hebrew_Remix/Arak.mp3" onclick="getMetadata('https://michoworks.github.io/PsyProjectMusic/Hebrew_Remix/Arak.mp3', 'audio/mp3')">Arak</a></li>
+        <li><a href="https://michoworks.github.io/PsyProjectMusic/Hebrew_Remix/Break_Heart.wav" onclick="getMetadata('https://michoworks.github.io/PsyProjectMusic/Hebrew_Remix/Break_Heart.wav', 'audio/wav')">Break Heart</a></li>
+        <li><a href="https://michoworks.github.io/PsyProjectMusic/Hebrew_Remix/Intelectoars.mp3" onclick="getMetadata('https://michoworks.github.io/PsyProjectMusic/Hebrew_Remix/Intelectoars.mp3', 'audio/mp3')">Intelectoars</a></li>
+        <li><a href="https://michoworks.github.io/PsyProjectMusic/Hebrew_Remix/LihoraXLow.mp3" onclick="getMetadata('https://michoworks.github.io/PsyProjectMusic/Hebrew_Remix/LihoraXLow.mp3', 'audio/mp3')">LihoraXLow</a></li>
+        <li><a href="https://michoworks.github.io/PsyProjectMusic/Hebrew_Remix/Ma_ata_Gay.mp3" onclick="getMetadata('https://michoworks.github.io/PsyProjectMusic/Hebrew_Remix/Ma_ata_Gay.mp3', 'audio/mp3')">Ma ata Gay</a></li>
+        <li><a href="https://michoworks.github.io/PsyProjectMusic/Hebrew_Remix/Ola_Al_Shulchanot.mp3" onclick="getMetadata('https://michoworks.github.io/PsyProjectMusic/Hebrew_Remix/Ola_Al_Shulchanot.mp3', 'audio/mp3')">Ola Al Shulchanot</a></li>
+        <li><a href="https://michoworks.github.io/PsyProjectMusic/Hebrew_Remix/OldFriend.mp3" onclick="getMetadata('https://michoworks.github.io/PsyProjectMusic/Hebrew_Remix/OldFriend.mp3', 'audio/mp3')">OldFriend</a></li>
+        <li><a href="https://michoworks.github.io/PsyProjectMusic/Hebrew_Remix/Player.mp3" onclick="getMetadata('https://michoworks.github.io/PsyProjectMusic/Hebrew_Remix/Player.mp3', 'audio/mp3')">Player</a></li>
+        <li><a href="https://michoworks.github.io/PsyProjectMusic/Hebrew_Remix/Pop_It_Up.wma" onclick="getMetadata('https://michoworks.github.io/PsyProjectMusic/Hebrew_Remix/Pop_It_Up.wma', 'audio/wma')">Pop It Up</a></li>
+        <li><a href="https://michoworks.github.io/PsyProjectMusic/Hebrew_Remix/Shara.wav" onclick="getMetadata('https://michoworks.github.io/PsyProjectMusic/Hebrew_Remix/Shara.wav', 'audio/wav')">Shara</a></li>
+        <li><a href="https://michoworks.github.io/PsyProjectMusic/Hebrew_Remix/TzlilMitar.mp3" onclick="getMetadata('https://michoworks.github.io/PsyProjectMusic/Hebrew_Remix/TzlilMitar.mp3', 'audio/mp3')">TzlilMitar</a></li>
     </ul>
+
+    <div id="metadata"></div>
+
+    <script>
+        async function getMetadata(url, mimeType) {
+            try {
+                const response = await fetch(url);
+                const arrayBuffer = await response.arrayBuffer();
+                const metadata = await musicMetadata.parseBuffer(arrayBuffer, mimeType);
+                
+                let info = `
+                    <h2>Metadata for ${url}</h2>
+                    <p><strong>Bitrate:</strong> ${metadata.format.bitrate || 'N/A'} kbps</p>
+                    <p><strong>Channel Count:</strong> ${metadata.format.numberOfChannels || 'N/A'} channels</p>
+                    <p><strong>Codec:</strong> ${metadata.format.codec || 'N/A'}</p>
+                `;
+
+                if (metadata.format.codec === 'mp3') {
+                    info += `<p><strong>Audio Technology:</strong> MP3 (may not support Hi-Fi/Dolby)</p>`;
+                }
+
+                document.getElementById('metadata').innerHTML = info;
+            } catch (error) {
+                console.error('Error fetching metadata:', error);
+                document.getElementById('metadata').innerHTML = `<p>Error fetching metadata for ${url}</p>`;
+            }
+        }
+    </script>
 </body>
 </html>

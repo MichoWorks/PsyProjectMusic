@@ -91,7 +91,7 @@ a {
 a:hover {
     color: #0ff;
     text-shadow: 0 0 15px #00f;
-    cursor: url('https://cdn.custom-cursor.com/db/5054/32/arrow2860.png'), pointer !important;
+    cursor: url('https://cdn.custom-cursor.com/db/cursor/32/daft_punk_cursor.png'), pointer !important;
 }
 
 a[data-info]::after {

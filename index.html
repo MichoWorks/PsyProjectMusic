@@ -4,53 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PsyProject Music Site</title>
-    <script src="https://cdn.jsdelivr.net/npm/music-metadata-browser@7.0.0/dist/music-metadata-browser.min.js"></script>
 </head>
 <body>
     <h1>Welcome to PsyProject Music Site</h1>
     <p>Click on the songs below to listen or stream them:</p>
     <ul id="song-list">
-        <li data-url="https://michoworks.github.io/PsyProjectMusic/Hebrew_Remix/6_Foot7Foot.mp3" data-mimetype="audio/mp3">6 Foot7Foot - <span class="metadata"></span></li>
-        <li data-url="https://michoworks.github.io/PsyProjectMusic/Hebrew_Remix/After_Basdinim.mp3" data-mimetype="audio/mp3">After Basdinim - <span class="metadata"></span></li>
-        <li data-url="https://michoworks.github.io/PsyProjectMusic/Hebrew_Remix/Arak.mp3" data-mimetype="audio/mp3">Arak - <span class="metadata"></span></li>
-        <li data-url="https://michoworks.github.io/PsyProjectMusic/Hebrew_Remix/Break_Heart.wav" data-mimetype="audio/wav">Break Heart - <span class="metadata"></span></li>
-        <li data-url="https://michoworks.github.io/PsyProjectMusic/Hebrew_Remix/Intelectoars.mp3" data-mimetype="audio/mp3">Intelectoars - <span class="metadata"></span></li>
-        <li data-url="https://michoworks.github.io/PsyProjectMusic/Hebrew_Remix/LihoraXLow.mp3" data-mimetype="audio/mp3">LihoraXLow - <span class="metadata"></span></li>
-        <li data-url="https://michoworks.github.io/PsyProjectMusic/Hebrew_Remix/Ma_ata_Gay.mp3" data-mimetype="audio/mp3">Ma ata Gay - <span class="metadata"></span></li>
-        <li data-url="https://michoworks.github.io/PsyProjectMusic/Hebrew_Remix/Ola_Al_Shulchanot.mp3" data-mimetype="audio/mp3">Ola Al Shulchanot - <span class="metadata"></span></li>
-        <li data-url="https://michoworks.github.io/PsyProjectMusic/Hebrew_Remix/OldFriend.mp3" data-mimetype="audio/mp3">OldFriend - <span class="metadata"></span></li>
-        <li data-url="https://michoworks.github.io/PsyProjectMusic/Hebrew_Remix/Player.mp3" data-mimetype="audio/mp3">Player - <span class="metadata"></span></li>
-        <li data-url="https://michoworks.github.io/PsyProjectMusic/Hebrew_Remix/Pop_It_Up.wma" data-mimetype="audio/wma">Pop It Up - <span class="metadata"></span></li>
-        <li data-url="https://michoworks.github.io/PsyProjectMusic/Hebrew_Remix/Shara.wav" data-mimetype="audio/wav">Shara - <span class="metadata"></span></li>
-        <li data-url="https://michoworks.github.io/PsyProjectMusic/Hebrew_Remix/TzlilMitar.mp3" data-mimetype="audio/mp3">TzlilMitar - <span class="metadata"></span></li>
+        <li><a href="https://michoworks.github.io/PsyProjectMusic/Hebrew_Remix/6_Foot7Foot.mp3" data-info>6 Foot7Foot</a></li>
+        <li><a href="https://michoworks.github.io/PsyProjectMusic/Hebrew_Remix/After_Basdinim.mp3" data-info>After Basdinim</a></li>
+        <li><a href="https://michoworks.github.io/PsyProjectMusic/Hebrew_Remix/Arak.mp3" data-info>Arak</a></li>
+        <li><a href="https://michoworks.github.io/PsyProjectMusic/Hebrew_Remix/Break_Heart.wav" data-info>Break Heart</a></li>
+        <li><a href="https://michoworks.github.io/PsyProjectMusic/Hebrew_Remix/Intelectoars.mp3" data-info>Intelectoars</a></li>
+        <li><a href="https://michoworks.github.io/PsyProjectMusic/Hebrew_Remix/LihoraXLow.mp3" data-info>LihoraXLow</a></li>
+        <li><a href="https://michoworks.github.io/PsyProjectMusic/Hebrew_Remix/Ma_ata_Gay.mp3" data-info>Ma ata Gay</a></li>
+        <li><a href="https://michoworks.github.io/PsyProjectMusic/Hebrew_Remix/Ola_Al_Shulchanot.mp3" data-info>Ola Al Shulchanot</a></li>
+        <li><a href="https://michoworks.github.io/PsyProjectMusic/Hebrew_Remix/OldFriend.mp3" data-info>OldFriend</a></li>
+        <li><a href="https://michoworks.github.io/PsyProjectMusic/Hebrew_Remix/Player.mp3" data-info>Player</a></li>
+        <li><a href="https://michoworks.github.io/PsyProjectMusic/Hebrew_Remix/Pop_It_Up.wma" data-info>Pop It Up</a></li>
+        <li><a href="https://michoworks.github.io/PsyProjectMusic/Hebrew_Remix/Shara.wav" data-info>Shara</a></li>
+        <li><a href="https://michoworks.github.io/PsyProjectMusic/Hebrew_Remix/TzlilMitar.mp3" data-info>TzlilMitar</a></li>
     </ul>
 
     <script>
-        async function fetchMetadata() {
-            const songList = document.getElementById('song-list').getElementsByTagName('li');
-            for (const song of songList) {
-                const url = song.getAttribute('data-url');
-                const mimeType = song.getAttribute('data-mimetype');
-                try {
-                    const response = await fetch(url);
-                    const arrayBuffer = await response.arrayBuffer();
-                    const metadata = await musicMetadata.parseBuffer(arrayBuffer, mimeType);
-                    
-                    const info = `
-                        <strong>Bitrate:</strong> ${metadata.format.bitrate || 'N/A'} kbps,
-                        <strong>Channel Count:</strong> ${metadata.format.numberOfChannels || 'N/A'} channels,
-                        <strong>Codec:</strong> ${metadata.format.codec || 'N/A'}
-                    `;
-
-                    song.querySelector('.metadata').innerHTML = info;
-                } catch (error) {
-                    console.error('Error fetching metadata:', error);
-                    song.querySelector('.metadata').innerHTML = 'Error fetching metadata';
-                }
-            }
+        async function fetchAudioInfo(url) {
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const response = await fetch(url);
+            const arrayBuffer = await response.arrayBuffer();
+            const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
+            return {
+                duration: audioBuffer.duration,
+                sampleRate: audioBuffer.sampleRate
+            };
         }
 
-        document.addEventListener('DOMContentLoaded', fetchMetadata);
+        document.addEventListener('DOMContentLoaded', async () => {
+            const links = document.querySelectorAll('a[data-info]');
+            for (const link of links) {
+                const info = await fetchAudioInfo(link.href);
+                link.dataset.duration = `Duration: ${info.duration.toFixed(2)} seconds`;
+                link.dataset.sampleRate = `Sample Rate: ${info.sampleRate} Hz`;
+                link.innerText += ` (${link.dataset.duration}, ${link.dataset.sampleRate})`;
+            }
+        });
     </script>
 </body>
 </html>

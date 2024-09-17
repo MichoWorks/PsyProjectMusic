@@ -56,7 +56,7 @@ p {
 .tab:hover {
     background: rgba(0, 0, 255, 0.3);
     transform: scale(1.05);
-    cursor: url('https://cdn.custom-cursor.com/db/5054/32/arrow2860.png'), pointer !important;
+    cursor: url('https://cdn.custom-cursor.com/db/pointer/32/daft_punk_pointer.png'), pointer !important;
 }
 
 .tab-title {
@@ -91,7 +91,7 @@ a {
 a:hover {
     color: #0ff;
     text-shadow: 0 0 15px #00f;
-    cursor: url('https://cdn.custom-cursor.com/db/5054/32/arrow2860.png'), pointer !important;
+    cursor: url('https://cdn.custom-cursor.com/db/pointer/32/daft_punk_pointer.png'), pointer !important;
 }
 
 a[data-info]::after {

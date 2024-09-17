@@ -1,27 +1,85 @@
-/* Reset default browser styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* Apply the Bebas Neue font family */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
-/* General body styling */
 body {
     font-family: 'Bebas Neue', sans-serif;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('https://source.unsplash.com/1920x1080/?abstract') no-repeat center center fixed;
-    background-size: cover;
+    background: linear-gradient(135deg, rgba(0,0,0,0.7), rgba(0,0,0,0.3));
     color: #fff;
-    text-align: center;
-    padding: 50px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
-/* Header styling */
+.container {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    max-width: 1200px;
+    width: 100%;
+}
+
 h1 {
-    font-size: 2.5em;
+    font-size: 3em;
+    margin-bottom: 20px;
+    color: #00f;
+    text-shadow: 0 0 15px #00f;
+}
+
+p {
+    font-size: 1.2em;
     margin-bottom: 20px;
 }
 
-/* Link styling */
+.tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.tab {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    width: calc(33% - 20px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: background 0.3s, transform 0.3s;
+}
+
+.tab:hover {
+    background: rgba(0, 0, 255, 0.3);
+    transform: scale(1.05);
+    cursor: url('https://cdn.custom-cursor.com/db/5054/32/arrow2860.png'), pointer !important;
+}
+
+.tab-title {
+    font-size: 1.5em;
+    margin: 0;
+    color: #00f;
+}
+
+.tab-content {
+    font-size: 1em;
+    color: #aaa;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    margin: 10px 0;
+}
+
 a {
     color: #00f;
     text-decoration: none;
@@ -33,45 +91,13 @@ a {
 a:hover {
     color: #0ff;
     text-shadow: 0 0 15px #00f;
-    cursor: url('https://cdn.custom-cursor.com/db/cursor/32/daft_punk_cursor.png'), pointer !important;
+    cursor: url('https://cdn.custom-cursor.com/db/5054/32/arrow2860.png'), pointer !important;
 }
 
-/* Tabs container */
-.tabs-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-}
-
-/* Individual tab styling */
-.tab {
-    background: rgba(0, 0, 255, 0.3); /* Transparent blue background */
-    border-radius: 12px;
-    padding: 20px;
-    width: 250px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(10px); /* Glass effect */
-    transition: background 0.3s, box-shadow 0.3s;
-    color: #fff;
-}
-
-.tab:hover {
-    background: rgba(0, 0, 255, 0.5); /* Slightly darker blue on hover */
-    box-shadow: 0 8px 20px rgba(0, 0, 255, 0.7);
-}
-
-/* Tabs inside the container */
-.tab-content {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    align-items: center;
-}
-
-/* Text inside the tab */
-.tab-content p {
-    margin: 0;
-    font-size: 1em;
-    color: #ddd;
+a[data-info]::after {
+    content: attr(data-duration) " " attr(data-sampleRate);
+    display: block;
+    font-size: 0.9em;
+    color: #aaa;
+    margin-top: 5px;
 }

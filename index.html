@@ -31,7 +31,7 @@
             try {
                 const audioContext = new (window.AudioContext || window.webkitAudioContext)();
                 const response = await fetch(url);
-                if (!response.ok) {
+                if (!response.ok) { 
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
                 const arrayBuffer = await response.arrayBuffer();
@@ -39,7 +39,6 @@
                 return {
                     duration: audioBuffer.duration,
                     sampleRate: audioBuffer.sampleRate,
-                    type: 'Supported format'
                 };
             } catch (error) {
                 console.error(`Error fetching or decoding audio data: ${error.message}`);

@@ -1,3 +1,6 @@
+/* Apply the Bebas Neue font family */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
 body {
     font-family: 'Bebas Neue', sans-serif;
     background: linear-gradient(135deg, rgba(0,0,0,0.7), rgba(0,0,0,0.3));
@@ -41,12 +44,13 @@ a {
     color: #00f;
     text-decoration: none;
     font-size: 1.1em;
-    cursor: url('https://cdn.custom-cursor.com/db/5053/32/arrow2860.png'), pointer !important;
+    cursor: url('https://cdn.custom-cursor.com/db/pointer/32/daft_punk_pointer.png'), pointer !important;
 }
 
 a:hover {
     color: #0ff;
     text-shadow: 0 0 10px #00f;
+    cursor: url('https://cdn.custom-cursor.com/db/5054/32/arrow2860.png'), pointer !important; /* Custom hover cursor */
 }
 
 a[data-info]::after {

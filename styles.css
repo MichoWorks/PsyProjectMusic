@@ -57,5 +57,5 @@ a[data-info]::after {
     content: attr(data-duration) " " attr(data-sampleRate) " " attr(data-type);
     display: block;
     font-size: 0.9em;
-    color: #aaa;
+    color: hsl(0, 0%, 67%);
 }
